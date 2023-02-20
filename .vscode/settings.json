@@ -1,0 +1,72 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "eslint.nodePath": ".yarn/sdks",
+  "eslint.runtime": "node",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "terminal.integrated.env.linux": {
+    "CACHE_DIR": "${workspaceFolder}/.cache",
+    "DOTENV_CONFIG_PATH": "${workspaceFolder}/.env"
+  },
+  "terminal.integrated.env.osx": {
+    "CACHE_DIR": "${workspaceFolder}/.cache",
+    "DOTENV_CONFIG_PATH": "${workspaceFolder}/.env"
+  },
+  "terminal.integrated.env.windows": {
+    "CACHE_DIR": "${workspaceFolder}\\.cache",
+    "DOTENV_CONFIG_PATH": "${workspaceFolder}\\.env"
+  },
+  "files.exclude": {
+    "**/.cache": true,
+    "**/.DS_Store": true,
+    "**/.editorconfig": true,
+    "**/.eslintcache": true,
+    "**/.git": true,
+    "**/.gitattributes": true,
+    "**/.husky": true,
+    "**/.pnp.*": true,
+    "**/.prettierignore": true,
+    "**/.yarn": true,
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/dist/": true,
+    "**/yarn-error.log": true,
+    "**/yarn.lock": true,
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "cSpell.ignoreWords": [
+    "browserslist",
+    "cloudfunctions",
+    "corejs",
+    "endregion",
+    "entrypoint",
+    "envars",
+    "eslintcache",
+    "esmodules",
+    "esnext",
+    "execa",
+    "firestore",
+    "globby",
+    "hono",
+    "kriasoft",
+    "miniflare",
+    "pathinfo",
+    "refetch",
+    "refetchable",
+    "sourcemap",
+    "spdx",
+    "tslib",
+    "typechecking",
+    "webflow",
+    "yarnpkg",
+    "yarnrc"
+  ]
+}

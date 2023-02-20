@@ -1,0 +1,38 @@
+# GitHub Actions workflow
+# https://help.github.com/actions
+
+name: Push (main)
+
+on:
+  push:
+    branches: [main]
+
+env:
+  VERSION: ${{ github.event.pull_request.number }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
+
+      # Install dependencies
+      - run: yarn install
+
+      # Build
+      - run: yarn workspace app build
+      - run: yarn workspace api build
+      - run: yarn workspace edge build
+
+      # Deploy
+      # - run: yarn workspace api deploy --env=test
+      #   env:
+      #     CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      # - run: yarn workspace edge deploy --env=test
+      #   env:
+      #     CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

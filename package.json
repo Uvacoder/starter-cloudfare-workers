@@ -1,0 +1,96 @@
+{
+  "name": "root",
+  "version": "0.0.0",
+  "packageManager": "yarn@4.0.0-rc.39",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "api",
+    "app",
+    "edge"
+  ],
+  "scripts": {
+    "postinstall": "husky install && node ./scripts/postinstall.js",
+    "start": "yarn workspace app run start",
+    "lint": "eslint --cache --report-unused-disable-directives .",
+    "test": "yarn workspaces foreach -tR run test",
+    "build": "yarn workspaces foreach run build",
+    "deploy": "yarn workspaces foreach run deploy",
+    "app:start": "yarn workspace app run start",
+    "app:build": "yarn workspace app run build",
+    "app:preview": "yarn workspace app run preview",
+    "api:build": "yarn workspace api run build",
+    "api:deploy": "yarn workspace api run build && yarn workspace api run deploy",
+    "edge:build": "yarn workspace edge run build",
+    "edge:deploy": "yarn workspaces foreach -tR --from '{app,edge}' run build && yarn workspace edge run deploy",
+    "g:tsc": "tsc"
+  },
+  "devDependencies": {
+    "@emotion/eslint-plugin": "^11.10.0",
+    "@types/node": "^18.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "execa": "^7.0.0",
+    "got": "^12.5.3",
+    "husky": "^8.0.3",
+    "miniflare": "^2.12.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5",
+    "whatwg-fetch": "^3.6.2",
+    "wrangler": "^2.10.0",
+    "zx": "^7.1.1"
+  },
+  "resolutions": {
+    "chalk@npm:^5.0.1": "^4.1.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "sourceType": "module"
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          ".tsx"
+        ],
+        "parser": "@typescript-eslint/parser",
+        "extends": [
+          "plugin:@typescript-eslint/recommended"
+        ],
+        "plugins": [
+          "@typescript-eslint"
+        ],
+        "parserOptions": {
+          "warnOnUnsupportedTypeScriptVersion": true
+        }
+      },
+      {
+        "files": [
+          "*/vite.config.ts",
+          "scripts/**/*.js"
+        ],
+        "env": {
+          "node": true
+        }
+      }
+    ],
+    "ignorePatterns": [
+      "/.cache",
+      "/.git",
+      "/.husky",
+      "/.yarn",
+      "/*/dist"
+    ]
+  }
+}

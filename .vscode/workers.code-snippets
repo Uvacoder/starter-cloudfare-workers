@@ -1,0 +1,21 @@
+{
+  "React": {
+    "scope": "typescript",
+    "prefix": "worker",
+    "body": [
+      "import { handleError } from \"core\";",
+      "",
+      "export default {",
+      "  fetch: handleError((req) => {",
+      "    const url = new URL(req.url);",
+      "",
+      "    ${0}",
+      "",
+      "    return fetch(url.toString(), req);",
+      "  }),",
+      "} as ExportedHandler;",
+      ""
+    ],
+    "description": "Cloudflare Worker"
+  }
+}
